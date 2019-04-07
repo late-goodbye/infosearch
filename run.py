@@ -1,5 +1,8 @@
 # Just a basic file to run other modules
 
-from console import mainloop
+from console import Console
 
-mainloop()
+
+def run():
+    console = Console()
+    console.mainloop()
