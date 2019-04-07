@@ -6,8 +6,8 @@ class Parser(object):
 
     def __init__(self, config):
         self.config = config
-        page_links = gather_page_links()
-        article_links = gather_article_links(page_links)
+        page_links = self.gather_page_links()
+        article_links = self.gather_article_links(page_links)
 
     def gather_page_links(self):
         main_page = requests.get(
@@ -22,3 +22,4 @@ class Parser(object):
             page = requests.get(self.config.host_url + page_link)
             tree = html.fromstring(page.content)
             article_links += tree.xpath(self.config.article_link_selector)
+        return article_links
