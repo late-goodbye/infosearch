@@ -23,3 +23,6 @@ class Parser(object):
             tree = html.fromstring(page.content)
             article_links += tree.xpath(self.config.article_link_selector)
         return article_links
+
+    def gather_articles(self, article_links):
+        pass
