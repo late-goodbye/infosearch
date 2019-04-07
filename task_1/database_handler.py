@@ -34,7 +34,7 @@ class DatabaseHandler(object):
 
     def create_connection(self):
         try:
-            conn = sqlite3.connect(self.config.db_file)
+            conn = sqlite3.connect(self.config.db_file + '.sqlite3')
             return conn
         except sqlite3.Error as e:
             print(e)

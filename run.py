@@ -2,7 +2,6 @@
 
 from console import Console
 
-
-def run():
+if __name__ == '__main__':
     console = Console()
     console.mainloop()
