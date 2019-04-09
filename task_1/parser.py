@@ -39,11 +39,7 @@ class Parser(object):
             tree = html.fromstring(article.text)
 
             title = tree.xpath(self.config.article_title_selector)[0]
-            try:
-                keywords = ';'.join(tree.xpath(self.config.article_keywords_selector))
-            except XPathEvalError as e:
-                print('Article {} has no tags'.format(title))
-                keywords = ''
+            keywords = ';'.join(map(str, tree.xpath(self.config.article_keywords_selector)))
             content = '\n'.join(tree.xpath(self.config.article_content_selector))
             url = link
             id = uuid4().hex

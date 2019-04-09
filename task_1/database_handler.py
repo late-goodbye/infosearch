@@ -52,7 +52,7 @@ class DatabaseHandler(object):
         sql = """INSERT INTO students(id, name, surname, mygroup) VALUES(?, ?, ?, ?);"""
         cursor = self.conn.cursor()
         cursor.execute(sql, student)
-        return cursor.lastrowid
+        return student[0]
 
     def add_article(self, article: tuple):
         sql = """INSERT INTO articles(id, title, keywords, content, url, student_id) VALUES(?, ?, ?, ?, ?, ?);"""
