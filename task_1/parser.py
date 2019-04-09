@@ -2,7 +2,6 @@ import requests
 from lxml import html
 from lxml.etree import XPathEvalError
 from uuid import uuid4
-import urllib
 
 
 from task_1.database_handler import DatabaseHandler
@@ -37,7 +36,7 @@ class Parser(object):
     def gather_articles(self, article_links: list):
         for link in article_links:
             article = requests.get(link)
-            tree = html.fromstring(article.content)
+            tree = html.fromstring(article.text)
 
             title = tree.xpath(self.config.article_title_selector)[0]
             try:
