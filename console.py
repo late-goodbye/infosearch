@@ -23,10 +23,10 @@ class Console(object):
 
             if command[0] in ('exit', 'close', 'quit'):
                 is_running = False
-            if command[0] == 'create_student':
+            elif command[0] == 'create_student':
                 student = (uuid4().hex, command[1], command[2], command[3])
                 print('Student with id {} has been added.'.format(self.database_handler.add_student(student)))
-            if command[0] == 'download_articles':
+            elif command[0] == 'download_articles':
                 self.parser.download_articles()
             else:
                 print("Command has not been recognized. Try again.")

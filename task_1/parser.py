@@ -1,6 +1,5 @@
 import requests
 from lxml import html
-from lxml.etree import XPathEvalError
 from uuid import uuid4
 
 
@@ -47,4 +46,4 @@ class Parser(object):
 
             article = (id, title, keywords, content, url, student_id)
 
-            print('Article with id {} has been added.'.format(self.database_handler.add_article(article)))
+            print('Article with number in order {} has been added.'.format(self.database_handler.add_article(article)))
