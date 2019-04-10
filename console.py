@@ -30,6 +30,5 @@ class Console(object):
                 self.parser.download_articles()
             else:
                 print("Command has not been recognized. Try again.")
-                pass
         else:
             print("Thank you for using this app. Goodbye.")

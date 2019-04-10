@@ -49,13 +49,29 @@ class DatabaseHandler(object):
             print(e)
 
     def add_student(self, student: tuple):
-        sql = """INSERT INTO students(id, name, surname, mygroup) VALUES(?, ?, ?, ?);"""
+        sql = "INSERT INTO students(id, name, surname, mygroup) VALUES(?, ?, ?, ?);"
         cursor = self.conn.cursor()
         cursor.execute(sql, student)
+        self.conn.commit()
         return student[0]
 
     def add_article(self, article: tuple):
-        sql = """INSERT INTO articles(id, title, keywords, content, url, student_id) VALUES(?, ?, ?, ?, ?, ?);"""
+        sql = "INSERT INTO articles(id, title, keywords, content, url, student_id) VALUES(?, ?, ?, ?, ?, ?);"
         cursor = self.conn.cursor()
         cursor.execute(sql, article)
+        self.conn.commit()
         return cursor.lastrowid
+
+    def get_articles(self):
+        sql = "SELECT content FROM articles;"
+        cursor = self.conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        return rows
+
+    def get_students(self):
+        sql = "SELECT * FROM students;"
+        cursor = self.conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        return rows
