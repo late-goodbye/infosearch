@@ -1,5 +1,6 @@
 from task_1.database_handler import DatabaseHandler
 from task_1.parser import Parser
+from task_2.formatter import Formatter
 from config import Config
 from uuid import uuid4
 
@@ -11,6 +12,7 @@ class Console(object):
         self.host_config = Config('mk')
         self.database_handler = DatabaseHandler(self.database_config)
         self.parser = Parser(self.host_config, self.database_handler)
+        self.formatter = Formatter(self.database_handler)
 
     def mainloop(self):
 

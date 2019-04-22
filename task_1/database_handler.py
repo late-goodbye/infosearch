@@ -26,11 +26,33 @@ class DatabaseHandler(object):
         );
     """
 
+    _create_porter_table_sql = """
+        CREATE TABLE IF NOT EXISTS words_porter
+        (
+            id text PRIMARY KEY,
+            term text,
+            article_id text,
+            FOREIGN KEY (article_id) REFERENCES articles(id)
+        )
+    """
+
+    _create_mystem_table_sql = """
+        CREATE TABLE IF NOT EXISTS words_mystem
+        (
+            id text PRIMARY KEY,
+            term text,
+            article_id text,
+            FOREIGN KEY (article_id) REFERENCES articles(id)
+        )
+    """
+
     def __init__(self, config):
         self.config = config
         self.conn = self.create_connection()
         self.create_table(self._create_students_table_sql)
         self.create_table(self._create_articles_table_sql)
+        self.create_table(self._create_porter_table_sql)
+        self.create_table(self._create_mystem_table_sql)
 
     def create_connection(self):
         try:
